@@ -1,0 +1,20 @@
+print("Macro written by Joe Warga on 2014-01-12");
+print("This script stretches the histogram from 0 to 255");
+
+dir1 = getDirectory("Source Directory ");
+list = getFileList(dir1); 
+setBatchMode(true);
+nBins = 256
+for (i=0; i<list.length; i++) { 
+	showProgress(i+1, list.length);
+	filename1 = dir1 + list[i];
+	open(filename1);
+	
+	getHistogram(values, counts, nBins);
+	NumSaturated = counts [255];
+	print (list[i]);
+	print (NumSaturated);
+	File.append(list[i] + "," + NumSaturated, dir1 + "//saturationcount.csv")
+	close();
+} 
+print("Finished");

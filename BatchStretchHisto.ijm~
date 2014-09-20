@@ -1,0 +1,16 @@
+print("Macro written by Joe Warga on 2014-01-12");
+print("This script stretches the histogram from 0 to 255");
+
+dir1 = getDirectory("Source Directory ");
+list = getFileList(dir1); 
+
+for (i=0; i<list.length; i++) { 
+	showProgress(i+1, list.length); 
+	filename1 = dir1 + list[i];
+	filename2 = dir1 + "HistoStetch_" + list[i];
+	open(filename1);
+	run("Enhance Contrast", "saturated=0.1");
+	saveAs("Tiff", filename2);
+	close();
+} 
+print("Finished");
